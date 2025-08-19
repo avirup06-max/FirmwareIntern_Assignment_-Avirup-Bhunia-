@@ -1,4 +1,4 @@
-# STM32F411 Board Bring-Up Notes (Phase 3)
+# STM32F411 Board Bring-Up Notes
 
 *MCU:* STM32F411RET6 (LQFP64)  
 *Regulator:* AP2112-3.3  
