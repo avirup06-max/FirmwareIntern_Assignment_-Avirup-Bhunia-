@@ -1,0 +1,33 @@
+# Gerber Export Guide (EasyEDA)
+
+This board uses a standard 2-layer stackup with a *solid GND plane* on the bottom. Use these settings to export Gerbers and a drill file your fab (e.g., JLCPCB/PCBWay) will accept.
+
+---
+
+## EasyEDA
+1. *Fabrication → Generate Fabrication File (Gerber)*.
+2. Ensure these layers are enabled: *TopLayer, BottomLayer, TopSilkLayer, BottomSilkLayer, TopSolderMaskLayer, BottomSolderMaskLayer, BoardOutline*.
+3. *Drill: Excellon format; units **mm*.
+4. Download the ZIP from EasyEDA.
+
+---
+
+## Fabrication Notes to Include
+- *Material:* FR-4, Tg ≥ 135 °C
+- *Layers:* 2
+- *Thickness:* 1.6 mm
+- *Copper:* 1 oz (35 µm) both sides
+- *Finish:* ENIG or HASL (lead-free)
+- *Solder mask:* any color; silkscreen white
+- *Impedance control:* not strictly required; keep D+/D− as short, parallel tracks
+- *Panelization:* let the fab do it unless you need multiples
+
+---
+
+## Pre-Flight Checklist
+- [ ] DRC clean (no unconnected nets, no mask slivers, no overlaps)
+- [ ] Text readable (no mirrored references unless intended)
+- [ ] Fiducials added if planning assembly
+- [ ] Mounting holes correct
+- [ ] USB shell connected to GND via ESD path
+- [ ] All test points labeled
