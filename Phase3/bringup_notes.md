@@ -10,7 +10,7 @@
 
 ---
 
-## 0) Visual & Continuity Checks (before power)
+## 1) Visual & Continuity Checks (before power)
 - No shorts between *3V3–GND, **VBUS–GND, **NRST–GND*.
 - Crystal and both load caps present and close to *PH0/PH1*.
 - *VCAP1 = 2.2 µF to GND, placed right by the pin; **VCAP2* not used on F411.
@@ -20,7 +20,7 @@
 
 ---
 
-## 1) Power-Up (no MCU activity yet)
+## 2) Power-Up (no MCU activity yet)
 1. *Bench supply or USB* off. Set current limit 200 mA.
 2. Power ON. Measure rails:
    - *+5V (VBUS):* 4.75–5.25 V
@@ -35,7 +35,7 @@ If anything is off: power down, check orientation, bridges, and shorts.
 
 ---
 
-## 2) Clock Verification
+## 3) Clock Verification
 - Optional: temporarily route *SYSCLK* via *MCO* to a test pad to verify frequency.
 - Alternatively, flash a simple firmware that toggles LED at a known rate; verify timing is correct (indirect HSE check).
 
@@ -43,7 +43,7 @@ Expected: HSE 8 MHz → PLL (e.g., 84 MHz SYSCLK typical) once firmware configur
 
 ---
 
-## 3) SWD Connectivity
+## 4) SWD Connectivity
 1. Connect *ST-Link: **3V3, GND, SWDIO (PA13), SWCLK (PA14), NRST*.
 2. In STM32CubeProgrammer (or OpenOCD), *connect*. You should read device ID and memory map.
 3. If connect fails:
@@ -53,7 +53,7 @@ Expected: HSE 8 MHz → PLL (e.g., 84 MHz SYSCLK typical) once firmware configur
 
 ---
 
-## 4) Minimal Firmware Sanity
+## 5) Minimal Firmware Sanity
 Flash a minimal program:
 - Enable HSE + PLL to target SYSCLK (e.g., 84 MHz).
 - Toggle *PC13* at 5 Hz (LED proof).
@@ -64,7 +64,7 @@ Flash a minimal program:
 
 ---
 
-## 5) USB FS Device (if used)
+## 6) USB FS Device (if used)
 - Ensure *PA11=D−, PA12=D+* routed with matched lengths; ESD diode close to connector.
 - *VBUS sense*: PA9 via divider (e.g., 220 kΩ → PA9 → 100 kΩ → GND). Confirm PA9 < 3.3 V with 5 V on VBUS.
 - Load a USB CDC example (or your own). Expect enumeration as a virtual COM port.
@@ -77,7 +77,7 @@ If device not detected:
 
 ---
 
-## 6) Final Functional Checklist
+## 7) Final Functional Checklist
 - [ ] 3V3 rail within spec under load
 - [ ] NRST acts correctly, no unintended brownouts
 - [ ] ST-Link connects consistently
@@ -89,7 +89,7 @@ If device not detected:
 
 ---
 
-## 7) Troubleshooting Quick Table
+## 8) Troubleshooting Quick Table
 | Symptom | Likely Cause | Fix |
 |---|---|---|
 | No ST-Link connect | SWD pins swapped, NRST held low, no 3V3 at Vref | Verify header mapping, release NRST, check 3V3 |
@@ -100,5 +100,5 @@ If device not detected:
 
 ---
 
-## 8) Test Points (recommended)
+## 9) Test Points (recommended)
 - *TP_VDD, TP_GND, TP_NRST, TP_TX, TP_RX, TP_MCO (optional)*
