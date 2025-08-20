@@ -102,3 +102,8 @@ Phase 3: Translating understanding into practical hardware design and bring-up.
 
 
 The project validates both conceptual understanding and the ability to apply it in real-world embedded systems development.
+________________________________________
+## Author
+
+**Avirup Bhunia**
+
