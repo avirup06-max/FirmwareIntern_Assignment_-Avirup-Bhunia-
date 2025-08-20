@@ -30,25 +30,39 @@ ________________________________________
 ## Technical Notes
 GPIO Speed and Signal Integrity
 •	Higher GPIO speed improves rise/fall times but increases EMI.
+
 •	Medium or high-speed GPIO output is typically selected for UART pins to balance integrity and noise.
+
 Baud Rate Calculation (Oversampling by 8/16)
 •	Oversampling by 16: higher tolerance to clock mismatch, lower noise sensitivity.
 •	Oversampling by 8: allows higher baud rates but requires tighter clock precision.
+
 •	BRR register is computed differently depending on oversampling mode.
 DMA NDTR and Circular Mode
+
 •	NDTR (Number of Data to Transfer) decrements with each byte moved.
+
 •	In circular mode, NDTR automatically reloads after reaching zero, ensuring continuous reception without reinitialization.
 USART Error Flags
+
 •	ORE (Overrun Error): Data lost because RX register was not read in time.
+
 •	FE (Framing Error): Stop bit not detected properly.
+
 •	NE (Noise Error): Line noise affected reception.
+
 •	Errors must be cleared by reading the status register and data register.
+
 Peripheral Reset and Flag Clearing
 •	Peripheral reset performed via RCC reset register.
+
 •	Flags cleared either by register read sequences or explicit flag reset bits in USART registers.
 Debugging Techniques
+
 •	Used CubeIDE Debug Perspective to observe variables (tx_data, rx_data).
+
 •	Verified interrupt firing and DMA transfers by monitoring memory buffers.
+
 •	Breakpoints in ISR handlers confirmed proper execution flow.
 ________________________________________
 ## How to Run
