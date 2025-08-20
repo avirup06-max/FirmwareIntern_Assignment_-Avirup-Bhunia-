@@ -8,17 +8,23 @@ All development and testing were performed in STM32CubeIDE, with build verificat
 
 ## Part A – Polling
 •	Implemented basic UART transmit/receive using blocking (polling) methods.
+
 •	Verified that Build Finished output confirmed successful compilation.
 ________________________________________
 ## Part B – Interrupt and Loopback
 •	Configured UART with interrupts for non-blocking communication.
+
 •	Implemented a loopback test: transmitted data was internally received and verified in the rx_data buffer.
+
 •	Debug session confirmed rx_data matched tx_data.
 ________________________________________
 ## Part C – DMA Integration
 •	Added DMA-based UART communication.
+
 •	Circular mode enabled continuous data reception.
+
 •	DMA NDTR register monitored for buffer status.
+
 •	Improved efficiency by reducing CPU intervention during high-throughput transfers.
 ________________________________________
 ## Technical Notes
